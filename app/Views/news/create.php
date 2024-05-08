@@ -1,4 +1,4 @@
-<h2><?= esc($title) ?></h2>
+
 <?= \Config\Services::validation()->listErrors() ?>
 <form action="/news/create" method="post">
     <?= csrf_field() ?>

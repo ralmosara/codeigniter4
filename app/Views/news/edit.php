@@ -1,4 +1,4 @@
-<h2><?= esc($title) ?></h2>
+
 <form action="/news/update" method="post">
 <?= csrf_field() ?>
     <label for="title">Title</label>

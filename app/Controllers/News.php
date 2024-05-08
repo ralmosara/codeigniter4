@@ -49,7 +49,7 @@ class News extends BaseController
                 'slug' => url_title($this->request->getPost('title'), '-', true),
                 'body' => $this->request->getPost('body'),
             ]);
-            echo view('news/success');
+            return redirect()->to('/news');
         } else {
             echo view('templates/header', ['title' => 'Create a news item']);
             echo view('news/create');
