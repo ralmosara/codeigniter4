@@ -57,4 +57,30 @@ class News extends BaseController
         }
  
     }
+
+    public function edit($id)
+    {   echo view('templates/header', ['title' => 'Update a news item']);
+        $model = new NewsModel();
+        $data['news'] = $model->getNewsbyId($id)->getRow();
+        echo view('news/edit', $data);
+    }
+
+    public function update()
+    {
+        $model = new NewsModel();
+        $id = $this->request->getPost('id');
+        $data = array(
+            'title' => $this->request->getPost('title'),
+            'slug' => url_title($this->request->getPost('title'), '-', true),
+        );
+        $model->updateNews($data, $id);
+        return redirect()->to('/news');
+    }
+
+    public function delete($id)
+    {
+        $model = new NewsModel();
+        $model->deleteNews($id);
+        return redirect()->to('/news');
+    }
 }
